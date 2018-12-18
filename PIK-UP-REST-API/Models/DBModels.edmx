@@ -1,0 +1,1794 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="PIKUPModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Accommodation">
+          <Key>
+            <PropertyRef Name="AccommodationID" />
+          </Key>
+          <Property Name="AccommodationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="TypeOfAccommodation" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="NumberofRooms" Type="int" Nullable="false" />
+          <Property Name="NumberofPeoplePerRoom" Type="float" Nullable="false" />
+          <Property Name="DistancetoCampus" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="WIFI" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Price" Type="float" Nullable="false" />
+          <Property Name="Comment" Type="varchar(max)" Nullable="false" />
+          <Property Name="Address" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Suburb" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="City" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Province" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Country" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="PostalCode" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="MainImage" Type="varchar(max)" Nullable="false" />
+          <Property Name="RoomImage" Type="varchar(max)" />
+          <Property Name="KitchenImage" Type="varchar(max)" />
+          <Property Name="BathroomImage" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Books">
+          <Key>
+            <PropertyRef Name="BookID" />
+          </Key>
+          <Property Name="BookID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="BookName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Edition" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Course" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="neworused" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Image" Type="varchar(max)" />
+          <Property Name="Price" Type="float" Nullable="false" />
+          <Property Name="Comment" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="CommentAccommodation">
+          <Key>
+            <PropertyRef Name="CommentID" />
+          </Key>
+          <Property Name="CommentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="AccommodationID" Type="int" Nullable="false" />
+          <Property Name="DateandTime" Type="varchar(max)" Nullable="false" />
+          <Property Name="Comments" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CommentBooks">
+          <Key>
+            <PropertyRef Name="CommentID" />
+          </Key>
+          <Property Name="CommentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BookID" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="DateandTime" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Comments" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CommentProduct">
+          <Key>
+            <PropertyRef Name="CommentID" />
+          </Key>
+          <Property Name="CommentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductID" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="DateandTime" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Comments" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CommentService">
+          <Key>
+            <PropertyRef Name="CommentID" />
+          </Key>
+          <Property Name="CommentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ServiceID" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="DateandTime" Type="varchar(max)" Nullable="false" />
+          <Property Name="Comments" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CommentSkillTalent">
+          <Key>
+            <PropertyRef Name="CommentID" />
+          </Key>
+          <Property Name="CommentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="skillandtalentID" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="DateandTime" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Comments" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CommentTransport">
+          <Key>
+            <PropertyRef Name="CommentID" />
+          </Key>
+          <Property Name="CommentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TransportationID" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="DateandTime" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Comments" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LikeAccommodation">
+          <Key>
+            <PropertyRef Name="likeId" />
+          </Key>
+          <Property Name="likeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AccommodationID" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="DateTime" Type="datetime" Nullable="false" />
+          <Property Name="Condition" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LikeBooks">
+          <Key>
+            <PropertyRef Name="likeId" />
+          </Key>
+          <Property Name="likeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BookID" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="DateTime" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Condition" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LikeProduct">
+          <Key>
+            <PropertyRef Name="likeId" />
+          </Key>
+          <Property Name="likeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductID" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="DateTime" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Condition" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LikeService">
+          <Key>
+            <PropertyRef Name="likeId" />
+          </Key>
+          <Property Name="likeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ServiceID" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="DateTime" Type="varchar(max)" Nullable="false" />
+          <Property Name="Condition" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LikeSkillsTalent">
+          <Key>
+            <PropertyRef Name="likeId" />
+          </Key>
+          <Property Name="likeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="skillandtalentID" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="DateTime" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Condition" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LikeTransport">
+          <Key>
+            <PropertyRef Name="likeId" />
+          </Key>
+          <Property Name="likeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TransportationID" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="DateTime" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Condition" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Name="ProductID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="Productname" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Categoryname" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="NeworUsed" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ProductImage" Type="varchar(max)" />
+          <Property Name="NumberofItem" Type="float" Nullable="false" />
+          <Property Name="ProductPrice" Type="float" Nullable="false" />
+          <Property Name="Comment" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Service">
+          <Key>
+            <PropertyRef Name="ServiceID" />
+          </Key>
+          <Property Name="ServiceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="Typeofservice" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ServiceImage" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Serviceprice" Type="float" Nullable="false" />
+          <Property Name="Comment" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="SkillsTalent">
+          <Key>
+            <PropertyRef Name="skillandtalentID" />
+          </Key>
+          <Property Name="skillandtalentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="TypeofskillORtalent" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Image" Type="varchar(max)" />
+          <Property Name="Video" Type="varchar(max)" />
+          <Property Name="Song" Type="varchar(max)" />
+          <Property Name="Comment" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Transport">
+          <Key>
+            <PropertyRef Name="TransportationID" />
+          </Key>
+          <Property Name="TransportationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="DepartureDestination" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ArrivalDestination" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DepartureDate" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Image" Type="varchar(max)" />
+          <Property Name="NumberOfPassengers" Type="float" Nullable="false" />
+          <Property Name="Price" Type="float" Nullable="false" />
+          <Property Name="Comment" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="UserTable">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Surname" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="StudentNumber" Type="int" Nullable="false" />
+          <Property Name="Gender" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Institution" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="MobileNumber" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Image" Type="varchar(max)" />
+        </EntityType>
+        <Association Name="FK_Accommodation_UserTable">
+          <End Role="UserTable" Type="Self.UserTable" Multiplicity="1" />
+          <End Role="Accommodation" Type="Self.Accommodation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserTable">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Accommodation">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Books_UserTable">
+          <End Role="UserTable" Type="Self.UserTable" Multiplicity="1" />
+          <End Role="Books" Type="Self.Books" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserTable">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Books">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CommentAccommodation_Accommodation">
+          <End Role="Accommodation" Type="Self.Accommodation" Multiplicity="1" />
+          <End Role="CommentAccommodation" Type="Self.CommentAccommodation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accommodation">
+              <PropertyRef Name="AccommodationID" />
+            </Principal>
+            <Dependent Role="CommentAccommodation">
+              <PropertyRef Name="AccommodationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CommentAccommodation_UserTable">
+          <End Role="UserTable" Type="Self.UserTable" Multiplicity="1" />
+          <End Role="CommentAccommodation" Type="Self.CommentAccommodation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserTable">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="CommentAccommodation">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CommentBooks_Books">
+          <End Role="Books" Type="Self.Books" Multiplicity="1" />
+          <End Role="CommentBooks" Type="Self.CommentBooks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Books">
+              <PropertyRef Name="BookID" />
+            </Principal>
+            <Dependent Role="CommentBooks">
+              <PropertyRef Name="BookID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CommentBooks_UserTable">
+          <End Role="UserTable" Type="Self.UserTable" Multiplicity="1" />
+          <End Role="CommentBooks" Type="Self.CommentBooks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserTable">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="CommentBooks">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CommentProduct_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="CommentProduct" Type="Self.CommentProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="CommentProduct">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CommentProduct_UserTable">
+          <End Role="UserTable" Type="Self.UserTable" Multiplicity="1" />
+          <End Role="CommentProduct" Type="Self.CommentProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserTable">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="CommentProduct">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CommentService_Service">
+          <End Role="Service" Type="Self.Service" Multiplicity="1" />
+          <End Role="CommentService" Type="Self.CommentService" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Service">
+              <PropertyRef Name="ServiceID" />
+            </Principal>
+            <Dependent Role="CommentService">
+              <PropertyRef Name="ServiceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CommentService_UserTable">
+          <End Role="UserTable" Type="Self.UserTable" Multiplicity="1" />
+          <End Role="CommentService" Type="Self.CommentService" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserTable">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="CommentService">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CommentSkillTalent_SkillsTalent">
+          <End Role="SkillsTalent" Type="Self.SkillsTalent" Multiplicity="1" />
+          <End Role="CommentSkillTalent" Type="Self.CommentSkillTalent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SkillsTalent">
+              <PropertyRef Name="skillandtalentID" />
+            </Principal>
+            <Dependent Role="CommentSkillTalent">
+              <PropertyRef Name="skillandtalentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CommentSkillTalent_UserTable">
+          <End Role="UserTable" Type="Self.UserTable" Multiplicity="1" />
+          <End Role="CommentSkillTalent" Type="Self.CommentSkillTalent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserTable">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="CommentSkillTalent">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CommentTransport_Transport">
+          <End Role="Transport" Type="Self.Transport" Multiplicity="1" />
+          <End Role="CommentTransport" Type="Self.CommentTransport" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Transport">
+              <PropertyRef Name="TransportationID" />
+            </Principal>
+            <Dependent Role="CommentTransport">
+              <PropertyRef Name="TransportationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CommentTransport_UserTable">
+          <End Role="UserTable" Type="Self.UserTable" Multiplicity="1" />
+          <End Role="CommentTransport" Type="Self.CommentTransport" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserTable">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="CommentTransport">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LikeAccommodation_Accommodation">
+          <End Role="Accommodation" Type="Self.Accommodation" Multiplicity="1" />
+          <End Role="LikeAccommodation" Type="Self.LikeAccommodation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accommodation">
+              <PropertyRef Name="AccommodationID" />
+            </Principal>
+            <Dependent Role="LikeAccommodation">
+              <PropertyRef Name="AccommodationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LikeAccommodation_UserTable">
+          <End Role="UserTable" Type="Self.UserTable" Multiplicity="1" />
+          <End Role="LikeAccommodation" Type="Self.LikeAccommodation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserTable">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="LikeAccommodation">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LikeBooks_Books">
+          <End Role="Books" Type="Self.Books" Multiplicity="1" />
+          <End Role="LikeBooks" Type="Self.LikeBooks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Books">
+              <PropertyRef Name="BookID" />
+            </Principal>
+            <Dependent Role="LikeBooks">
+              <PropertyRef Name="BookID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LikeBooks_UserTable">
+          <End Role="UserTable" Type="Self.UserTable" Multiplicity="1" />
+          <End Role="LikeBooks" Type="Self.LikeBooks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserTable">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="LikeBooks">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LikeProduct_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="LikeProduct" Type="Self.LikeProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="LikeProduct">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LikeProduct_UserTable">
+          <End Role="UserTable" Type="Self.UserTable" Multiplicity="1" />
+          <End Role="LikeProduct" Type="Self.LikeProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserTable">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="LikeProduct">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LikeService_Service">
+          <End Role="Service" Type="Self.Service" Multiplicity="1" />
+          <End Role="LikeService" Type="Self.LikeService" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Service">
+              <PropertyRef Name="ServiceID" />
+            </Principal>
+            <Dependent Role="LikeService">
+              <PropertyRef Name="ServiceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LikeService_UserTable">
+          <End Role="UserTable" Type="Self.UserTable" Multiplicity="1" />
+          <End Role="LikeService" Type="Self.LikeService" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserTable">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="LikeService">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LikeSkillsTalent_SkillsTalent">
+          <End Role="SkillsTalent" Type="Self.SkillsTalent" Multiplicity="1" />
+          <End Role="LikeSkillsTalent" Type="Self.LikeSkillsTalent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SkillsTalent">
+              <PropertyRef Name="skillandtalentID" />
+            </Principal>
+            <Dependent Role="LikeSkillsTalent">
+              <PropertyRef Name="skillandtalentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LikeSkillsTalent_UserTable">
+          <End Role="UserTable" Type="Self.UserTable" Multiplicity="1" />
+          <End Role="LikeSkillsTalent" Type="Self.LikeSkillsTalent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserTable">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="LikeSkillsTalent">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LikeTransport_Transport">
+          <End Role="Transport" Type="Self.Transport" Multiplicity="1" />
+          <End Role="LikeTransport" Type="Self.LikeTransport" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Transport">
+              <PropertyRef Name="TransportationID" />
+            </Principal>
+            <Dependent Role="LikeTransport">
+              <PropertyRef Name="TransportationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LikeTransport_UserTable">
+          <End Role="UserTable" Type="Self.UserTable" Multiplicity="1" />
+          <End Role="LikeTransport" Type="Self.LikeTransport" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserTable">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="LikeTransport">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_UserTable">
+          <End Role="UserTable" Type="Self.UserTable" Multiplicity="1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserTable">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Service_UserTable">
+          <End Role="UserTable" Type="Self.UserTable" Multiplicity="1" />
+          <End Role="Service" Type="Self.Service" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserTable">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Service">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SkillsTalent_UserTable">
+          <End Role="UserTable" Type="Self.UserTable" Multiplicity="1" />
+          <End Role="SkillsTalent" Type="Self.SkillsTalent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserTable">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="SkillsTalent">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Transport_UserTable">
+          <End Role="UserTable" Type="Self.UserTable" Multiplicity="1" />
+          <End Role="Transport" Type="Self.Transport" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserTable">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Transport">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PIKUPModelStoreContainer">
+          <EntitySet Name="Accommodation" EntityType="Self.Accommodation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Books" EntityType="Self.Books" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CommentAccommodation" EntityType="Self.CommentAccommodation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CommentBooks" EntityType="Self.CommentBooks" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CommentProduct" EntityType="Self.CommentProduct" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CommentService" EntityType="Self.CommentService" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CommentSkillTalent" EntityType="Self.CommentSkillTalent" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CommentTransport" EntityType="Self.CommentTransport" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LikeAccommodation" EntityType="Self.LikeAccommodation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LikeBooks" EntityType="Self.LikeBooks" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LikeProduct" EntityType="Self.LikeProduct" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LikeService" EntityType="Self.LikeService" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LikeSkillsTalent" EntityType="Self.LikeSkillsTalent" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LikeTransport" EntityType="Self.LikeTransport" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Service" EntityType="Self.Service" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SkillsTalent" EntityType="Self.SkillsTalent" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Transport" EntityType="Self.Transport" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserTable" EntityType="Self.UserTable" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Accommodation_UserTable" Association="Self.FK_Accommodation_UserTable">
+            <End Role="UserTable" EntitySet="UserTable" />
+            <End Role="Accommodation" EntitySet="Accommodation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Books_UserTable" Association="Self.FK_Books_UserTable">
+            <End Role="UserTable" EntitySet="UserTable" />
+            <End Role="Books" EntitySet="Books" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CommentAccommodation_Accommodation" Association="Self.FK_CommentAccommodation_Accommodation">
+            <End Role="Accommodation" EntitySet="Accommodation" />
+            <End Role="CommentAccommodation" EntitySet="CommentAccommodation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CommentAccommodation_UserTable" Association="Self.FK_CommentAccommodation_UserTable">
+            <End Role="UserTable" EntitySet="UserTable" />
+            <End Role="CommentAccommodation" EntitySet="CommentAccommodation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CommentBooks_Books" Association="Self.FK_CommentBooks_Books">
+            <End Role="Books" EntitySet="Books" />
+            <End Role="CommentBooks" EntitySet="CommentBooks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CommentBooks_UserTable" Association="Self.FK_CommentBooks_UserTable">
+            <End Role="UserTable" EntitySet="UserTable" />
+            <End Role="CommentBooks" EntitySet="CommentBooks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CommentProduct_Product" Association="Self.FK_CommentProduct_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="CommentProduct" EntitySet="CommentProduct" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CommentProduct_UserTable" Association="Self.FK_CommentProduct_UserTable">
+            <End Role="UserTable" EntitySet="UserTable" />
+            <End Role="CommentProduct" EntitySet="CommentProduct" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CommentService_Service" Association="Self.FK_CommentService_Service">
+            <End Role="Service" EntitySet="Service" />
+            <End Role="CommentService" EntitySet="CommentService" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CommentService_UserTable" Association="Self.FK_CommentService_UserTable">
+            <End Role="UserTable" EntitySet="UserTable" />
+            <End Role="CommentService" EntitySet="CommentService" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CommentSkillTalent_SkillsTalent" Association="Self.FK_CommentSkillTalent_SkillsTalent">
+            <End Role="SkillsTalent" EntitySet="SkillsTalent" />
+            <End Role="CommentSkillTalent" EntitySet="CommentSkillTalent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CommentSkillTalent_UserTable" Association="Self.FK_CommentSkillTalent_UserTable">
+            <End Role="UserTable" EntitySet="UserTable" />
+            <End Role="CommentSkillTalent" EntitySet="CommentSkillTalent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CommentTransport_Transport" Association="Self.FK_CommentTransport_Transport">
+            <End Role="Transport" EntitySet="Transport" />
+            <End Role="CommentTransport" EntitySet="CommentTransport" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CommentTransport_UserTable" Association="Self.FK_CommentTransport_UserTable">
+            <End Role="UserTable" EntitySet="UserTable" />
+            <End Role="CommentTransport" EntitySet="CommentTransport" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LikeAccommodation_Accommodation" Association="Self.FK_LikeAccommodation_Accommodation">
+            <End Role="Accommodation" EntitySet="Accommodation" />
+            <End Role="LikeAccommodation" EntitySet="LikeAccommodation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LikeAccommodation_UserTable" Association="Self.FK_LikeAccommodation_UserTable">
+            <End Role="UserTable" EntitySet="UserTable" />
+            <End Role="LikeAccommodation" EntitySet="LikeAccommodation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LikeBooks_Books" Association="Self.FK_LikeBooks_Books">
+            <End Role="Books" EntitySet="Books" />
+            <End Role="LikeBooks" EntitySet="LikeBooks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LikeBooks_UserTable" Association="Self.FK_LikeBooks_UserTable">
+            <End Role="UserTable" EntitySet="UserTable" />
+            <End Role="LikeBooks" EntitySet="LikeBooks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LikeProduct_Product" Association="Self.FK_LikeProduct_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="LikeProduct" EntitySet="LikeProduct" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LikeProduct_UserTable" Association="Self.FK_LikeProduct_UserTable">
+            <End Role="UserTable" EntitySet="UserTable" />
+            <End Role="LikeProduct" EntitySet="LikeProduct" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LikeService_Service" Association="Self.FK_LikeService_Service">
+            <End Role="Service" EntitySet="Service" />
+            <End Role="LikeService" EntitySet="LikeService" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LikeService_UserTable" Association="Self.FK_LikeService_UserTable">
+            <End Role="UserTable" EntitySet="UserTable" />
+            <End Role="LikeService" EntitySet="LikeService" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LikeSkillsTalent_SkillsTalent" Association="Self.FK_LikeSkillsTalent_SkillsTalent">
+            <End Role="SkillsTalent" EntitySet="SkillsTalent" />
+            <End Role="LikeSkillsTalent" EntitySet="LikeSkillsTalent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LikeSkillsTalent_UserTable" Association="Self.FK_LikeSkillsTalent_UserTable">
+            <End Role="UserTable" EntitySet="UserTable" />
+            <End Role="LikeSkillsTalent" EntitySet="LikeSkillsTalent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LikeTransport_Transport" Association="Self.FK_LikeTransport_Transport">
+            <End Role="Transport" EntitySet="Transport" />
+            <End Role="LikeTransport" EntitySet="LikeTransport" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LikeTransport_UserTable" Association="Self.FK_LikeTransport_UserTable">
+            <End Role="UserTable" EntitySet="UserTable" />
+            <End Role="LikeTransport" EntitySet="LikeTransport" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_UserTable" Association="Self.FK_Product_UserTable">
+            <End Role="UserTable" EntitySet="UserTable" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Service_UserTable" Association="Self.FK_Service_UserTable">
+            <End Role="UserTable" EntitySet="UserTable" />
+            <End Role="Service" EntitySet="Service" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SkillsTalent_UserTable" Association="Self.FK_SkillsTalent_UserTable">
+            <End Role="UserTable" EntitySet="UserTable" />
+            <End Role="SkillsTalent" EntitySet="SkillsTalent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Transport_UserTable" Association="Self.FK_Transport_UserTable">
+            <End Role="UserTable" EntitySet="UserTable" />
+            <End Role="Transport" EntitySet="Transport" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PIKUPModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="PIKUPEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Books" EntityType="PIKUPModel.Book" />
+          <EntitySet Name="Products" EntityType="PIKUPModel.Product" />
+          <EntitySet Name="Services" EntityType="PIKUPModel.Service" />
+          <EntitySet Name="SkillsTalents" EntityType="PIKUPModel.SkillsTalent" />
+          <EntitySet Name="Transports" EntityType="PIKUPModel.Transport" />
+          <EntitySet Name="Accommodations" EntityType="PIKUPModel.Accommodation" />
+          <EntitySet Name="UserTables" EntityType="PIKUPModel.UserTable" />
+          <AssociationSet Name="FK_Accommodation_UserTable" Association="PIKUPModel.FK_Accommodation_UserTable">
+            <End Role="UserTable" EntitySet="UserTables" />
+            <End Role="Accommodation" EntitySet="Accommodations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Books_UserTable" Association="PIKUPModel.FK_Books_UserTable">
+            <End Role="UserTable" EntitySet="UserTables" />
+            <End Role="Book" EntitySet="Books" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_UserTable" Association="PIKUPModel.FK_Product_UserTable">
+            <End Role="UserTable" EntitySet="UserTables" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SkillsTalent_UserTable" Association="PIKUPModel.FK_SkillsTalent_UserTable">
+            <End Role="UserTable" EntitySet="UserTables" />
+            <End Role="SkillsTalent" EntitySet="SkillsTalents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Transport_UserTable" Association="PIKUPModel.FK_Transport_UserTable">
+            <End Role="UserTable" EntitySet="UserTables" />
+            <End Role="Transport" EntitySet="Transports" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Service_UserTable" Association="PIKUPModel.FK_Service_UserTable">
+            <End Role="UserTable" EntitySet="UserTables" />
+            <End Role="Service" EntitySet="Services" />
+          </AssociationSet>
+          <EntitySet Name="CommentAccommodations" EntityType="PIKUPModel.CommentAccommodation" />
+          <EntitySet Name="LikeAccommodations" EntityType="PIKUPModel.LikeAccommodation" />
+          <AssociationSet Name="FK_CommentAccommodation_Accommodation" Association="PIKUPModel.FK_CommentAccommodation_Accommodation">
+            <End Role="Accommodation" EntitySet="Accommodations" />
+            <End Role="CommentAccommodation" EntitySet="CommentAccommodations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LikeAccommodation_Accommodation" Association="PIKUPModel.FK_LikeAccommodation_Accommodation">
+            <End Role="Accommodation" EntitySet="Accommodations" />
+            <End Role="LikeAccommodation" EntitySet="LikeAccommodations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CommentAccommodation_UserTable" Association="PIKUPModel.FK_CommentAccommodation_UserTable">
+            <End Role="UserTable" EntitySet="UserTables" />
+            <End Role="CommentAccommodation" EntitySet="CommentAccommodations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LikeAccommodation_UserTable" Association="PIKUPModel.FK_LikeAccommodation_UserTable">
+            <End Role="UserTable" EntitySet="UserTables" />
+            <End Role="LikeAccommodation" EntitySet="LikeAccommodations" />
+          </AssociationSet>
+          <EntitySet Name="CommentServices" EntityType="PIKUPModel.CommentService" />
+          <AssociationSet Name="FK_CommentService_Service" Association="PIKUPModel.FK_CommentService_Service">
+            <End Role="Service" EntitySet="Services" />
+            <End Role="CommentService" EntitySet="CommentServices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CommentService_UserTable" Association="PIKUPModel.FK_CommentService_UserTable">
+            <End Role="UserTable" EntitySet="UserTables" />
+            <End Role="CommentService" EntitySet="CommentServices" />
+          </AssociationSet>
+          <EntitySet Name="LikeServices" EntityType="PIKUPModel.LikeService" />
+          <AssociationSet Name="FK_LikeService_Service" Association="PIKUPModel.FK_LikeService_Service">
+            <End Role="Service" EntitySet="Services" />
+            <End Role="LikeService" EntitySet="LikeServices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LikeService_UserTable" Association="PIKUPModel.FK_LikeService_UserTable">
+            <End Role="UserTable" EntitySet="UserTables" />
+            <End Role="LikeService" EntitySet="LikeServices" />
+          </AssociationSet>
+          <EntitySet Name="CommentBooks" EntityType="PIKUPModel.CommentBook" />
+          <EntitySet Name="LikeBooks" EntityType="PIKUPModel.LikeBook" />
+          <AssociationSet Name="FK_CommentBooks_Books" Association="PIKUPModel.FK_CommentBooks_Books">
+            <End Role="Book" EntitySet="Books" />
+            <End Role="CommentBook" EntitySet="CommentBooks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LikeBooks_Books" Association="PIKUPModel.FK_LikeBooks_Books">
+            <End Role="Book" EntitySet="Books" />
+            <End Role="LikeBook" EntitySet="LikeBooks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CommentBooks_UserTable" Association="PIKUPModel.FK_CommentBooks_UserTable">
+            <End Role="UserTable" EntitySet="UserTables" />
+            <End Role="CommentBook" EntitySet="CommentBooks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LikeBooks_UserTable" Association="PIKUPModel.FK_LikeBooks_UserTable">
+            <End Role="UserTable" EntitySet="UserTables" />
+            <End Role="LikeBook" EntitySet="LikeBooks" />
+          </AssociationSet>
+          <EntitySet Name="CommentProducts" EntityType="PIKUPModel.CommentProduct" />
+          <EntitySet Name="LikeProducts" EntityType="PIKUPModel.LikeProduct" />
+          <AssociationSet Name="FK_CommentProduct_Product" Association="PIKUPModel.FK_CommentProduct_Product">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="CommentProduct" EntitySet="CommentProducts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CommentProduct_UserTable" Association="PIKUPModel.FK_CommentProduct_UserTable">
+            <End Role="UserTable" EntitySet="UserTables" />
+            <End Role="CommentProduct" EntitySet="CommentProducts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LikeProduct_Product" Association="PIKUPModel.FK_LikeProduct_Product">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="LikeProduct" EntitySet="LikeProducts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LikeProduct_UserTable" Association="PIKUPModel.FK_LikeProduct_UserTable">
+            <End Role="UserTable" EntitySet="UserTables" />
+            <End Role="LikeProduct" EntitySet="LikeProducts" />
+          </AssociationSet>
+          <EntitySet Name="CommentTransports" EntityType="PIKUPModel.CommentTransport" />
+          <EntitySet Name="LikeTransports" EntityType="PIKUPModel.LikeTransport" />
+          <AssociationSet Name="FK_CommentTransport_Transport" Association="PIKUPModel.FK_CommentTransport_Transport">
+            <End Role="Transport" EntitySet="Transports" />
+            <End Role="CommentTransport" EntitySet="CommentTransports" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CommentTransport_UserTable" Association="PIKUPModel.FK_CommentTransport_UserTable">
+            <End Role="UserTable" EntitySet="UserTables" />
+            <End Role="CommentTransport" EntitySet="CommentTransports" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LikeTransport_Transport" Association="PIKUPModel.FK_LikeTransport_Transport">
+            <End Role="Transport" EntitySet="Transports" />
+            <End Role="LikeTransport" EntitySet="LikeTransports" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LikeTransport_UserTable" Association="PIKUPModel.FK_LikeTransport_UserTable">
+            <End Role="UserTable" EntitySet="UserTables" />
+            <End Role="LikeTransport" EntitySet="LikeTransports" />
+          </AssociationSet>
+          <EntitySet Name="CommentSkillTalents" EntityType="PIKUPModel.CommentSkillTalent" />
+          <EntitySet Name="LikeSkillsTalents" EntityType="PIKUPModel.LikeSkillsTalent" />
+          <AssociationSet Name="FK_CommentSkillTalent_SkillsTalent" Association="PIKUPModel.FK_CommentSkillTalent_SkillsTalent">
+            <End Role="SkillsTalent" EntitySet="SkillsTalents" />
+            <End Role="CommentSkillTalent" EntitySet="CommentSkillTalents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CommentSkillTalent_UserTable" Association="PIKUPModel.FK_CommentSkillTalent_UserTable">
+            <End Role="UserTable" EntitySet="UserTables" />
+            <End Role="CommentSkillTalent" EntitySet="CommentSkillTalents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LikeSkillsTalent_SkillsTalent" Association="PIKUPModel.FK_LikeSkillsTalent_SkillsTalent">
+            <End Role="SkillsTalent" EntitySet="SkillsTalents" />
+            <End Role="LikeSkillsTalent" EntitySet="LikeSkillsTalents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LikeSkillsTalent_UserTable" Association="PIKUPModel.FK_LikeSkillsTalent_UserTable">
+            <End Role="UserTable" EntitySet="UserTables" />
+            <End Role="LikeSkillsTalent" EntitySet="LikeSkillsTalents" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Book">
+          <Key>
+            <PropertyRef Name="BookID" />
+          </Key>
+          <Property Name="BookID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="BookName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Edition" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Course" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="neworused" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Price" Type="Double" Nullable="false" />
+          <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="UserTable" Relationship="PIKUPModel.FK_Books_UserTable" FromRole="Book" ToRole="UserTable" />
+          <NavigationProperty Name="CommentBooks" Relationship="PIKUPModel.FK_CommentBooks_Books" FromRole="Book" ToRole="CommentBook" />
+          <NavigationProperty Name="LikeBooks" Relationship="PIKUPModel.FK_LikeBooks_Books" FromRole="Book" ToRole="LikeBook" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Name="ProductID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="Productname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Categoryname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NeworUsed" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ProductImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="NumberofItem" Type="Double" Nullable="false" />
+          <Property Name="ProductPrice" Type="Double" Nullable="false" />
+          <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="UserTable" Relationship="PIKUPModel.FK_Product_UserTable" FromRole="Product" ToRole="UserTable" />
+          <NavigationProperty Name="CommentProducts" Relationship="PIKUPModel.FK_CommentProduct_Product" FromRole="Product" ToRole="CommentProduct" />
+          <NavigationProperty Name="LikeProducts" Relationship="PIKUPModel.FK_LikeProduct_Product" FromRole="Product" ToRole="LikeProduct" />
+        </EntityType>
+        <EntityType Name="Service">
+          <Key>
+            <PropertyRef Name="ServiceID" />
+          </Key>
+          <Property Name="ServiceID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="Typeofservice" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ServiceImage" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Serviceprice" Type="Double" Nullable="false" />
+          <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="UserTable" Relationship="PIKUPModel.FK_Service_UserTable" FromRole="Service" ToRole="UserTable" />
+          <NavigationProperty Name="CommentServices" Relationship="PIKUPModel.FK_CommentService_Service" FromRole="Service" ToRole="CommentService" />
+          <NavigationProperty Name="LikeServices" Relationship="PIKUPModel.FK_LikeService_Service" FromRole="Service" ToRole="LikeService" />
+        </EntityType>
+        <EntityType Name="SkillsTalent">
+          <Key>
+            <PropertyRef Name="skillandtalentID" />
+          </Key>
+          <Property Name="skillandtalentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="TypeofskillORtalent" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Video" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Song" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="UserTable" Relationship="PIKUPModel.FK_SkillsTalent_UserTable" FromRole="SkillsTalent" ToRole="UserTable" />
+          <NavigationProperty Name="CommentSkillTalents" Relationship="PIKUPModel.FK_CommentSkillTalent_SkillsTalent" FromRole="SkillsTalent" ToRole="CommentSkillTalent" />
+          <NavigationProperty Name="LikeSkillsTalents" Relationship="PIKUPModel.FK_LikeSkillsTalent_SkillsTalent" FromRole="SkillsTalent" ToRole="LikeSkillsTalent" />
+        </EntityType>
+        <EntityType Name="Transport">
+          <Key>
+            <PropertyRef Name="TransportationID" />
+          </Key>
+          <Property Name="TransportationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="DepartureDestination" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ArrivalDestination" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DepartureDate" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="NumberOfPassengers" Type="Double" Nullable="false" />
+          <Property Name="Price" Type="Double" Nullable="false" />
+          <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="UserTable" Relationship="PIKUPModel.FK_Transport_UserTable" FromRole="Transport" ToRole="UserTable" />
+          <NavigationProperty Name="CommentTransports" Relationship="PIKUPModel.FK_CommentTransport_Transport" FromRole="Transport" ToRole="CommentTransport" />
+          <NavigationProperty Name="LikeTransports" Relationship="PIKUPModel.FK_LikeTransport_Transport" FromRole="Transport" ToRole="LikeTransport" />
+        </EntityType>
+        <EntityType Name="Accommodation">
+          <Key>
+            <PropertyRef Name="AccommodationID" />
+          </Key>
+          <Property Name="AccommodationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="TypeOfAccommodation" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="NumberofRooms" Type="Int32" Nullable="false" />
+          <Property Name="NumberofPeoplePerRoom" Type="Double" Nullable="false" />
+          <Property Name="DistancetoCampus" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="WIFI" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Price" Type="Double" Nullable="false" />
+          <Property Name="Comment" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Suburb" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Province" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Country" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="PostalCode" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="MainImage" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="RoomImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="KitchenImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="BathroomImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="UserTable" Relationship="PIKUPModel.FK_Accommodation_UserTable" FromRole="Accommodation" ToRole="UserTable" />
+          <NavigationProperty Name="CommentAccommodations" Relationship="PIKUPModel.FK_CommentAccommodation_Accommodation" FromRole="Accommodation" ToRole="CommentAccommodation" />
+          <NavigationProperty Name="LikeAccommodations" Relationship="PIKUPModel.FK_LikeAccommodation_Accommodation" FromRole="Accommodation" ToRole="LikeAccommodation" />
+        </EntityType>
+        <EntityType Name="UserTable">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Surname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="StudentNumber" Type="Int32" Nullable="false" />
+          <Property Name="Gender" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Institution" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MobileNumber" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Accommodations" Relationship="PIKUPModel.FK_Accommodation_UserTable" FromRole="UserTable" ToRole="Accommodation" />
+          <NavigationProperty Name="Books" Relationship="PIKUPModel.FK_Books_UserTable" FromRole="UserTable" ToRole="Book" />
+          <NavigationProperty Name="Products" Relationship="PIKUPModel.FK_Product_UserTable" FromRole="UserTable" ToRole="Product" />
+          <NavigationProperty Name="SkillsTalents" Relationship="PIKUPModel.FK_SkillsTalent_UserTable" FromRole="UserTable" ToRole="SkillsTalent" />
+          <NavigationProperty Name="Transports" Relationship="PIKUPModel.FK_Transport_UserTable" FromRole="UserTable" ToRole="Transport" />
+          <NavigationProperty Name="Services" Relationship="PIKUPModel.FK_Service_UserTable" FromRole="UserTable" ToRole="Service" />
+          <NavigationProperty Name="CommentAccommodations" Relationship="PIKUPModel.FK_CommentAccommodation_UserTable" FromRole="UserTable" ToRole="CommentAccommodation" />
+          <NavigationProperty Name="LikeAccommodations" Relationship="PIKUPModel.FK_LikeAccommodation_UserTable" FromRole="UserTable" ToRole="LikeAccommodation" />
+          <NavigationProperty Name="CommentServices" Relationship="PIKUPModel.FK_CommentService_UserTable" FromRole="UserTable" ToRole="CommentService" />
+          <NavigationProperty Name="LikeServices" Relationship="PIKUPModel.FK_LikeService_UserTable" FromRole="UserTable" ToRole="LikeService" />
+          <NavigationProperty Name="CommentBooks" Relationship="PIKUPModel.FK_CommentBooks_UserTable" FromRole="UserTable" ToRole="CommentBook" />
+          <NavigationProperty Name="LikeBooks" Relationship="PIKUPModel.FK_LikeBooks_UserTable" FromRole="UserTable" ToRole="LikeBook" />
+          <NavigationProperty Name="CommentProducts" Relationship="PIKUPModel.FK_CommentProduct_UserTable" FromRole="UserTable" ToRole="CommentProduct" />
+          <NavigationProperty Name="LikeProducts" Relationship="PIKUPModel.FK_LikeProduct_UserTable" FromRole="UserTable" ToRole="LikeProduct" />
+          <NavigationProperty Name="CommentTransports" Relationship="PIKUPModel.FK_CommentTransport_UserTable" FromRole="UserTable" ToRole="CommentTransport" />
+          <NavigationProperty Name="LikeTransports" Relationship="PIKUPModel.FK_LikeTransport_UserTable" FromRole="UserTable" ToRole="LikeTransport" />
+          <NavigationProperty Name="CommentSkillTalents" Relationship="PIKUPModel.FK_CommentSkillTalent_UserTable" FromRole="UserTable" ToRole="CommentSkillTalent" />
+          <NavigationProperty Name="LikeSkillsTalents" Relationship="PIKUPModel.FK_LikeSkillsTalent_UserTable" FromRole="UserTable" ToRole="LikeSkillsTalent" />
+        </EntityType>
+        <Association Name="FK_Accommodation_UserTable">
+          <End Type="PIKUPModel.UserTable" Role="UserTable" Multiplicity="1" />
+          <End Type="PIKUPModel.Accommodation" Role="Accommodation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserTable">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Accommodation">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Books_UserTable">
+          <End Type="PIKUPModel.UserTable" Role="UserTable" Multiplicity="1" />
+          <End Type="PIKUPModel.Book" Role="Book" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserTable">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Book">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_UserTable">
+          <End Type="PIKUPModel.UserTable" Role="UserTable" Multiplicity="1" />
+          <End Type="PIKUPModel.Product" Role="Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserTable">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SkillsTalent_UserTable">
+          <End Type="PIKUPModel.UserTable" Role="UserTable" Multiplicity="1" />
+          <End Type="PIKUPModel.SkillsTalent" Role="SkillsTalent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserTable">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="SkillsTalent">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Transport_UserTable">
+          <End Type="PIKUPModel.UserTable" Role="UserTable" Multiplicity="1" />
+          <End Type="PIKUPModel.Transport" Role="Transport" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserTable">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Transport">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Service_UserTable">
+          <End Type="PIKUPModel.UserTable" Role="UserTable" Multiplicity="1" />
+          <End Type="PIKUPModel.Service" Role="Service" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserTable">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Service">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="CommentAccommodation">
+          <Key>
+            <PropertyRef Name="CommentID" />
+          </Key>
+          <Property Name="CommentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="AccommodationID" Type="Int32" Nullable="false" />
+          <Property Name="DateandTime" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Comments" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Accommodation" Relationship="PIKUPModel.FK_CommentAccommodation_Accommodation" FromRole="CommentAccommodation" ToRole="Accommodation" />
+          <NavigationProperty Name="UserTable" Relationship="PIKUPModel.FK_CommentAccommodation_UserTable" FromRole="CommentAccommodation" ToRole="UserTable" />
+        </EntityType>
+        <EntityType Name="LikeAccommodation">
+          <Key>
+            <PropertyRef Name="likeId" />
+          </Key>
+          <Property Name="likeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AccommodationID" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="DateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Condition" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Accommodation" Relationship="PIKUPModel.FK_LikeAccommodation_Accommodation" FromRole="LikeAccommodation" ToRole="Accommodation" />
+          <NavigationProperty Name="UserTable" Relationship="PIKUPModel.FK_LikeAccommodation_UserTable" FromRole="LikeAccommodation" ToRole="UserTable" />
+        </EntityType>
+        <Association Name="FK_CommentAccommodation_Accommodation">
+          <End Type="PIKUPModel.Accommodation" Role="Accommodation" Multiplicity="1" />
+          <End Type="PIKUPModel.CommentAccommodation" Role="CommentAccommodation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accommodation">
+              <PropertyRef Name="AccommodationID" />
+            </Principal>
+            <Dependent Role="CommentAccommodation">
+              <PropertyRef Name="AccommodationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LikeAccommodation_Accommodation">
+          <End Type="PIKUPModel.Accommodation" Role="Accommodation" Multiplicity="1" />
+          <End Type="PIKUPModel.LikeAccommodation" Role="LikeAccommodation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accommodation">
+              <PropertyRef Name="AccommodationID" />
+            </Principal>
+            <Dependent Role="LikeAccommodation">
+              <PropertyRef Name="AccommodationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CommentAccommodation_UserTable">
+          <End Type="PIKUPModel.UserTable" Role="UserTable" Multiplicity="1" />
+          <End Type="PIKUPModel.CommentAccommodation" Role="CommentAccommodation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserTable">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="CommentAccommodation">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LikeAccommodation_UserTable">
+          <End Type="PIKUPModel.UserTable" Role="UserTable" Multiplicity="1" />
+          <End Type="PIKUPModel.LikeAccommodation" Role="LikeAccommodation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserTable">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="LikeAccommodation">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="CommentService">
+          <Key>
+            <PropertyRef Name="CommentID" />
+          </Key>
+          <Property Name="CommentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ServiceID" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="DateandTime" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Comments" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Service" Relationship="PIKUPModel.FK_CommentService_Service" FromRole="CommentService" ToRole="Service" />
+          <NavigationProperty Name="UserTable" Relationship="PIKUPModel.FK_CommentService_UserTable" FromRole="CommentService" ToRole="UserTable" />
+        </EntityType>
+        <Association Name="FK_CommentService_Service">
+          <End Type="PIKUPModel.Service" Role="Service" Multiplicity="1" />
+          <End Type="PIKUPModel.CommentService" Role="CommentService" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Service">
+              <PropertyRef Name="ServiceID" />
+            </Principal>
+            <Dependent Role="CommentService">
+              <PropertyRef Name="ServiceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CommentService_UserTable">
+          <End Type="PIKUPModel.UserTable" Role="UserTable" Multiplicity="1" />
+          <End Type="PIKUPModel.CommentService" Role="CommentService" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserTable">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="CommentService">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="LikeService">
+          <Key>
+            <PropertyRef Name="likeId" />
+          </Key>
+          <Property Name="likeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ServiceID" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="DateTime" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Condition" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Service" Relationship="PIKUPModel.FK_LikeService_Service" FromRole="LikeService" ToRole="Service" />
+          <NavigationProperty Name="UserTable" Relationship="PIKUPModel.FK_LikeService_UserTable" FromRole="LikeService" ToRole="UserTable" />
+        </EntityType>
+        <Association Name="FK_LikeService_Service">
+          <End Type="PIKUPModel.Service" Role="Service" Multiplicity="1" />
+          <End Type="PIKUPModel.LikeService" Role="LikeService" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Service">
+              <PropertyRef Name="ServiceID" />
+            </Principal>
+            <Dependent Role="LikeService">
+              <PropertyRef Name="ServiceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LikeService_UserTable">
+          <End Type="PIKUPModel.UserTable" Role="UserTable" Multiplicity="1" />
+          <End Type="PIKUPModel.LikeService" Role="LikeService" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserTable">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="LikeService">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="CommentBook">
+          <Key>
+            <PropertyRef Name="CommentID" />
+          </Key>
+          <Property Name="CommentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BookID" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="DateandTime" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Comments" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Book" Relationship="PIKUPModel.FK_CommentBooks_Books" FromRole="CommentBook" ToRole="Book" />
+          <NavigationProperty Name="UserTable" Relationship="PIKUPModel.FK_CommentBooks_UserTable" FromRole="CommentBook" ToRole="UserTable" />
+        </EntityType>
+        <EntityType Name="LikeBook">
+          <Key>
+            <PropertyRef Name="likeId" />
+          </Key>
+          <Property Name="likeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BookID" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="DateTime" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Condition" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Book" Relationship="PIKUPModel.FK_LikeBooks_Books" FromRole="LikeBook" ToRole="Book" />
+          <NavigationProperty Name="UserTable" Relationship="PIKUPModel.FK_LikeBooks_UserTable" FromRole="LikeBook" ToRole="UserTable" />
+        </EntityType>
+        <Association Name="FK_CommentBooks_Books">
+          <End Type="PIKUPModel.Book" Role="Book" Multiplicity="1" />
+          <End Type="PIKUPModel.CommentBook" Role="CommentBook" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Book">
+              <PropertyRef Name="BookID" />
+            </Principal>
+            <Dependent Role="CommentBook">
+              <PropertyRef Name="BookID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LikeBooks_Books">
+          <End Type="PIKUPModel.Book" Role="Book" Multiplicity="1" />
+          <End Type="PIKUPModel.LikeBook" Role="LikeBook" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Book">
+              <PropertyRef Name="BookID" />
+            </Principal>
+            <Dependent Role="LikeBook">
+              <PropertyRef Name="BookID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CommentBooks_UserTable">
+          <End Type="PIKUPModel.UserTable" Role="UserTable" Multiplicity="1" />
+          <End Type="PIKUPModel.CommentBook" Role="CommentBook" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserTable">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="CommentBook">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LikeBooks_UserTable">
+          <End Type="PIKUPModel.UserTable" Role="UserTable" Multiplicity="1" />
+          <End Type="PIKUPModel.LikeBook" Role="LikeBook" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserTable">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="LikeBook">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="CommentProduct">
+          <Key>
+            <PropertyRef Name="CommentID" />
+          </Key>
+          <Property Name="CommentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductID" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="DateandTime" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Comments" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Product" Relationship="PIKUPModel.FK_CommentProduct_Product" FromRole="CommentProduct" ToRole="Product" />
+          <NavigationProperty Name="UserTable" Relationship="PIKUPModel.FK_CommentProduct_UserTable" FromRole="CommentProduct" ToRole="UserTable" />
+        </EntityType>
+        <EntityType Name="LikeProduct">
+          <Key>
+            <PropertyRef Name="likeId" />
+          </Key>
+          <Property Name="likeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductID" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="DateTime" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Condition" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Product" Relationship="PIKUPModel.FK_LikeProduct_Product" FromRole="LikeProduct" ToRole="Product" />
+          <NavigationProperty Name="UserTable" Relationship="PIKUPModel.FK_LikeProduct_UserTable" FromRole="LikeProduct" ToRole="UserTable" />
+        </EntityType>
+        <Association Name="FK_CommentProduct_Product">
+          <End Type="PIKUPModel.Product" Role="Product" Multiplicity="1" />
+          <End Type="PIKUPModel.CommentProduct" Role="CommentProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="CommentProduct">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CommentProduct_UserTable">
+          <End Type="PIKUPModel.UserTable" Role="UserTable" Multiplicity="1" />
+          <End Type="PIKUPModel.CommentProduct" Role="CommentProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserTable">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="CommentProduct">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LikeProduct_Product">
+          <End Type="PIKUPModel.Product" Role="Product" Multiplicity="1" />
+          <End Type="PIKUPModel.LikeProduct" Role="LikeProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="LikeProduct">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LikeProduct_UserTable">
+          <End Type="PIKUPModel.UserTable" Role="UserTable" Multiplicity="1" />
+          <End Type="PIKUPModel.LikeProduct" Role="LikeProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserTable">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="LikeProduct">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="CommentTransport">
+          <Key>
+            <PropertyRef Name="CommentID" />
+          </Key>
+          <Property Name="CommentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TransportationID" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="DateandTime" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Comments" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Transport" Relationship="PIKUPModel.FK_CommentTransport_Transport" FromRole="CommentTransport" ToRole="Transport" />
+          <NavigationProperty Name="UserTable" Relationship="PIKUPModel.FK_CommentTransport_UserTable" FromRole="CommentTransport" ToRole="UserTable" />
+        </EntityType>
+        <EntityType Name="LikeTransport">
+          <Key>
+            <PropertyRef Name="likeId" />
+          </Key>
+          <Property Name="likeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TransportationID" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="DateTime" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Condition" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Transport" Relationship="PIKUPModel.FK_LikeTransport_Transport" FromRole="LikeTransport" ToRole="Transport" />
+          <NavigationProperty Name="UserTable" Relationship="PIKUPModel.FK_LikeTransport_UserTable" FromRole="LikeTransport" ToRole="UserTable" />
+        </EntityType>
+        <Association Name="FK_CommentTransport_Transport">
+          <End Type="PIKUPModel.Transport" Role="Transport" Multiplicity="1" />
+          <End Type="PIKUPModel.CommentTransport" Role="CommentTransport" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Transport">
+              <PropertyRef Name="TransportationID" />
+            </Principal>
+            <Dependent Role="CommentTransport">
+              <PropertyRef Name="TransportationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CommentTransport_UserTable">
+          <End Type="PIKUPModel.UserTable" Role="UserTable" Multiplicity="1" />
+          <End Type="PIKUPModel.CommentTransport" Role="CommentTransport" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserTable">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="CommentTransport">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LikeTransport_Transport">
+          <End Type="PIKUPModel.Transport" Role="Transport" Multiplicity="1" />
+          <End Type="PIKUPModel.LikeTransport" Role="LikeTransport" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Transport">
+              <PropertyRef Name="TransportationID" />
+            </Principal>
+            <Dependent Role="LikeTransport">
+              <PropertyRef Name="TransportationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LikeTransport_UserTable">
+          <End Type="PIKUPModel.UserTable" Role="UserTable" Multiplicity="1" />
+          <End Type="PIKUPModel.LikeTransport" Role="LikeTransport" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserTable">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="LikeTransport">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="CommentSkillTalent">
+          <Key>
+            <PropertyRef Name="CommentID" />
+          </Key>
+          <Property Name="CommentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="skillandtalentID" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="DateandTime" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Comments" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="SkillsTalent" Relationship="PIKUPModel.FK_CommentSkillTalent_SkillsTalent" FromRole="CommentSkillTalent" ToRole="SkillsTalent" />
+          <NavigationProperty Name="UserTable" Relationship="PIKUPModel.FK_CommentSkillTalent_UserTable" FromRole="CommentSkillTalent" ToRole="UserTable" />
+        </EntityType>
+        <EntityType Name="LikeSkillsTalent">
+          <Key>
+            <PropertyRef Name="likeId" />
+          </Key>
+          <Property Name="likeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="skillandtalentID" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="DateTime" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Condition" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="SkillsTalent" Relationship="PIKUPModel.FK_LikeSkillsTalent_SkillsTalent" FromRole="LikeSkillsTalent" ToRole="SkillsTalent" />
+          <NavigationProperty Name="UserTable" Relationship="PIKUPModel.FK_LikeSkillsTalent_UserTable" FromRole="LikeSkillsTalent" ToRole="UserTable" />
+        </EntityType>
+        <Association Name="FK_CommentSkillTalent_SkillsTalent">
+          <End Type="PIKUPModel.SkillsTalent" Role="SkillsTalent" Multiplicity="1" />
+          <End Type="PIKUPModel.CommentSkillTalent" Role="CommentSkillTalent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SkillsTalent">
+              <PropertyRef Name="skillandtalentID" />
+            </Principal>
+            <Dependent Role="CommentSkillTalent">
+              <PropertyRef Name="skillandtalentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CommentSkillTalent_UserTable">
+          <End Type="PIKUPModel.UserTable" Role="UserTable" Multiplicity="1" />
+          <End Type="PIKUPModel.CommentSkillTalent" Role="CommentSkillTalent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserTable">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="CommentSkillTalent">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LikeSkillsTalent_SkillsTalent">
+          <End Type="PIKUPModel.SkillsTalent" Role="SkillsTalent" Multiplicity="1" />
+          <End Type="PIKUPModel.LikeSkillsTalent" Role="LikeSkillsTalent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SkillsTalent">
+              <PropertyRef Name="skillandtalentID" />
+            </Principal>
+            <Dependent Role="LikeSkillsTalent">
+              <PropertyRef Name="skillandtalentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LikeSkillsTalent_UserTable">
+          <End Type="PIKUPModel.UserTable" Role="UserTable" Multiplicity="1" />
+          <End Type="PIKUPModel.LikeSkillsTalent" Role="LikeSkillsTalent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserTable">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="LikeSkillsTalent">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PIKUPModelStoreContainer" CdmEntityContainer="PIKUPEntities">
+          <EntitySetMapping Name="Books">
+            <EntityTypeMapping TypeName="PIKUPModel.Book">
+              <MappingFragment StoreEntitySet="Books">
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="neworused" ColumnName="neworused" />
+                <ScalarProperty Name="Course" ColumnName="Course" />
+                <ScalarProperty Name="Edition" ColumnName="Edition" />
+                <ScalarProperty Name="BookName" ColumnName="BookName" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="BookID" ColumnName="BookID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="PIKUPModel.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="ProductPrice" ColumnName="ProductPrice" />
+                <ScalarProperty Name="NumberofItem" ColumnName="NumberofItem" />
+                <ScalarProperty Name="ProductImage" ColumnName="ProductImage" />
+                <ScalarProperty Name="NeworUsed" ColumnName="NeworUsed" />
+                <ScalarProperty Name="Categoryname" ColumnName="Categoryname" />
+                <ScalarProperty Name="Productname" ColumnName="Productname" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Services">
+            <EntityTypeMapping TypeName="PIKUPModel.Service">
+              <MappingFragment StoreEntitySet="Service">
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="Serviceprice" ColumnName="Serviceprice" />
+                <ScalarProperty Name="ServiceImage" ColumnName="ServiceImage" />
+                <ScalarProperty Name="Typeofservice" ColumnName="Typeofservice" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ServiceID" ColumnName="ServiceID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SkillsTalents">
+            <EntityTypeMapping TypeName="PIKUPModel.SkillsTalent">
+              <MappingFragment StoreEntitySet="SkillsTalent">
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="Song" ColumnName="Song" />
+                <ScalarProperty Name="Video" ColumnName="Video" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="TypeofskillORtalent" ColumnName="TypeofskillORtalent" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="skillandtalentID" ColumnName="skillandtalentID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Transports">
+            <EntityTypeMapping TypeName="PIKUPModel.Transport">
+              <MappingFragment StoreEntitySet="Transport">
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="NumberOfPassengers" ColumnName="NumberOfPassengers" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="DepartureDate" ColumnName="DepartureDate" />
+                <ScalarProperty Name="ArrivalDestination" ColumnName="ArrivalDestination" />
+                <ScalarProperty Name="DepartureDestination" ColumnName="DepartureDestination" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="TransportationID" ColumnName="TransportationID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Accommodations">
+            <EntityTypeMapping TypeName="PIKUPModel.Accommodation">
+              <MappingFragment StoreEntitySet="Accommodation">
+                <ScalarProperty Name="BathroomImage" ColumnName="BathroomImage" />
+                <ScalarProperty Name="KitchenImage" ColumnName="KitchenImage" />
+                <ScalarProperty Name="RoomImage" ColumnName="RoomImage" />
+                <ScalarProperty Name="MainImage" ColumnName="MainImage" />
+                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Province" ColumnName="Province" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Suburb" ColumnName="Suburb" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="WIFI" ColumnName="WIFI" />
+                <ScalarProperty Name="DistancetoCampus" ColumnName="DistancetoCampus" />
+                <ScalarProperty Name="NumberofPeoplePerRoom" ColumnName="NumberofPeoplePerRoom" />
+                <ScalarProperty Name="NumberofRooms" ColumnName="NumberofRooms" />
+                <ScalarProperty Name="TypeOfAccommodation" ColumnName="TypeOfAccommodation" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="AccommodationID" ColumnName="AccommodationID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserTables">
+            <EntityTypeMapping TypeName="PIKUPModel.UserTable">
+              <MappingFragment StoreEntitySet="UserTable">
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Institution" ColumnName="Institution" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="StudentNumber" ColumnName="StudentNumber" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CommentAccommodations">
+            <EntityTypeMapping TypeName="PIKUPModel.CommentAccommodation">
+              <MappingFragment StoreEntitySet="CommentAccommodation">
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="DateandTime" ColumnName="DateandTime" />
+                <ScalarProperty Name="AccommodationID" ColumnName="AccommodationID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="CommentID" ColumnName="CommentID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LikeAccommodations">
+            <EntityTypeMapping TypeName="PIKUPModel.LikeAccommodation">
+              <MappingFragment StoreEntitySet="LikeAccommodation">
+                <ScalarProperty Name="Condition" ColumnName="Condition" />
+                <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="AccommodationID" ColumnName="AccommodationID" />
+                <ScalarProperty Name="likeId" ColumnName="likeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CommentServices">
+            <EntityTypeMapping TypeName="PIKUPModel.CommentService">
+              <MappingFragment StoreEntitySet="CommentService">
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="DateandTime" ColumnName="DateandTime" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ServiceID" ColumnName="ServiceID" />
+                <ScalarProperty Name="CommentID" ColumnName="CommentID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LikeServices">
+            <EntityTypeMapping TypeName="PIKUPModel.LikeService">
+              <MappingFragment StoreEntitySet="LikeService">
+                <ScalarProperty Name="Condition" ColumnName="Condition" />
+                <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ServiceID" ColumnName="ServiceID" />
+                <ScalarProperty Name="likeId" ColumnName="likeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CommentBooks">
+            <EntityTypeMapping TypeName="PIKUPModel.CommentBook">
+              <MappingFragment StoreEntitySet="CommentBooks">
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="DateandTime" ColumnName="DateandTime" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="BookID" ColumnName="BookID" />
+                <ScalarProperty Name="CommentID" ColumnName="CommentID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LikeBooks">
+            <EntityTypeMapping TypeName="PIKUPModel.LikeBook">
+              <MappingFragment StoreEntitySet="LikeBooks">
+                <ScalarProperty Name="Condition" ColumnName="Condition" />
+                <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="BookID" ColumnName="BookID" />
+                <ScalarProperty Name="likeId" ColumnName="likeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CommentProducts">
+            <EntityTypeMapping TypeName="PIKUPModel.CommentProduct">
+              <MappingFragment StoreEntitySet="CommentProduct">
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="DateandTime" ColumnName="DateandTime" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="CommentID" ColumnName="CommentID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LikeProducts">
+            <EntityTypeMapping TypeName="PIKUPModel.LikeProduct">
+              <MappingFragment StoreEntitySet="LikeProduct">
+                <ScalarProperty Name="Condition" ColumnName="Condition" />
+                <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="likeId" ColumnName="likeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CommentTransports">
+            <EntityTypeMapping TypeName="PIKUPModel.CommentTransport">
+              <MappingFragment StoreEntitySet="CommentTransport">
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="DateandTime" ColumnName="DateandTime" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="TransportationID" ColumnName="TransportationID" />
+                <ScalarProperty Name="CommentID" ColumnName="CommentID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LikeTransports">
+            <EntityTypeMapping TypeName="PIKUPModel.LikeTransport">
+              <MappingFragment StoreEntitySet="LikeTransport">
+                <ScalarProperty Name="Condition" ColumnName="Condition" />
+                <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="TransportationID" ColumnName="TransportationID" />
+                <ScalarProperty Name="likeId" ColumnName="likeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CommentSkillTalents">
+            <EntityTypeMapping TypeName="PIKUPModel.CommentSkillTalent">
+              <MappingFragment StoreEntitySet="CommentSkillTalent">
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="DateandTime" ColumnName="DateandTime" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="skillandtalentID" ColumnName="skillandtalentID" />
+                <ScalarProperty Name="CommentID" ColumnName="CommentID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LikeSkillsTalents">
+            <EntityTypeMapping TypeName="PIKUPModel.LikeSkillsTalent">
+              <MappingFragment StoreEntitySet="LikeSkillsTalent">
+                <ScalarProperty Name="Condition" ColumnName="Condition" />
+                <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="skillandtalentID" ColumnName="skillandtalentID" />
+                <ScalarProperty Name="likeId" ColumnName="likeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
